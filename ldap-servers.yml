@@ -1,0 +1,23 @@
+- hostname: ldap.domain.local
+  port: 636
+  encryption-method: ssl
+  user-base-dn: dc=domain,dc=local
+  match-usernames:
+    - LOCAL\\(.*)
+    - (.*)@domain\.local
+  username-attribute: sAMAccountName
+  search-bind-dn: cn=srv_gcd,ou=ServicesAuth,dc=domain,dc=local
+  search-bind-password: passwordXsds224e
+  user-search-filter: (&(&(objectClass=user)(objectCategory=person))(memberof=cn=acess_guacd,ou=Groups,dc=domain,dc=local))
+
+- hostname: ldap.sub.domain.local
+  port: 636
+  encryption-method: ssl
+  user-base-dn: dc=sub,dc=domain,dc=local
+  match-usernames:
+    - SUB\\(.*)
+    - (.*)@sub\.domain\.local
+  username-attribute: sAMAccountName
+  search-bind-dn: cn=srv_sub_gcd,ou=ServicesAuth,dc=sub,dc=domain,dc=local
+  search-bind-password: passwordXX5485
+  user-search-filter: (&(&(objectClass=user)(objectCategory=person))(memberof=cn=accesso_guaca_sub,ou=Groups,dc=sub,dc=domain,dc=local))
